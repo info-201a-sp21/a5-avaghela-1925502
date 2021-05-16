@@ -1,6 +1,6 @@
 ---
 title: "index.Rmd"
-output: html_document test
+output: html_document test doc
 ---
 
 ```{r setup, include=FALSE}
