@@ -1,28 +1,87 @@
 ---
-title: "index.Rmd"
-output: html_document test doc
+title: "2018 Mass Shootings"
+author: "Arjun Vaghela"
+date: "05/19/2021"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r include=FALSE}
+# Source in the other script
+source("analysis.R")
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Loading `knitr` library
+library(knitr)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
+## Summary
 
-You can also embed plots, for example:
+In 2018, the United States had a large number of shootings that caused many
+injuries and deaths. There were a total of `r total_shootings` shootings that
+occurred during this year and a total of `r total_lives_lost` people lost their
+lives. With numerous shootings happening during the year, 
+`r most_shooting_occurrences` seemed to be impacted the most as they had the 
+most occurrences out of any other city. Within Chicago, there were a total of 
+`r chicago_injured` injured due to the shootings along with `r chicago_killed`
+killed during 2018.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+## Summary Table
+With many cities and states finding themselves having to recover from these
+shootings, below you can find an aggregated table that shows which states 
+have suffered the most in terms of people killed and injured in 2018.
+
+
+```{r, echo=FALSE}
+kable(summary_table)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+From this table, you can see how different states were impacted based on the
+on the total amount of injured and killed people. 
+
+## Parkland Shooting
+On `r parkland_date`, Nikolas Cruz opened fire at Marjory Stoneman Douglas 
+High School in `r parkland_city`, `r parkland_state`. Reports say that the 
+coordinate points for the shooting were around 
+(`r parkland_lat`, `r parkland_long`), which confirms that it was indeed on the 
+school premises. This tragedy ended up impacting many people and in total, Cruz
+ended up killing `r parkland_killed` and injuring `r parkland_injured` students
+and staff. According to NBC News, Cruz had reportedly been expelled from the 
+high school and was enrolled at another school at the time of the shooting. 
+This shooting was was arguably the largest shooting in history and even 
+President Donald Trump tweeted that there were "many signs the Florida
+shooter was mentally disturbed" (https://www.nbcnews.com/news/us-news/police-respond-shooting-parkland-florida-high-school-n848101).
+
+## Interactive Map
+
+```{r, echo=FALSE}
+interactive_map
+```
+
+Above you will find an interactive map that shows the shootings that had 
+occurred during 2018. As you hover over the different markers, you will find
+information about each shooting. The Parkland shooting described earlier
+is shown with the largest circle on the map as it was the largest shooting in
+2018, followed by other large circles that represent other large shootings. 
+
+## States with Highest Shootings (Bar Graph)
+With many students going out of state for college, safety is one of the main 
+concerns that people take into account. Many people wonder which states are the
+most prone to gun violence and below you will find a graph that includes the 
+top 6 states with the highest amount of deaths due to shootings in 2018. 
+
+```{r, echo=FALSE}
+chart
+```
+
+As shown in the chart above, California and Florida were the two highest ranked 
+states in terms of deaths and injured people due to gun violence. With
+California having 50 deaths and Florida have 48 deaths in 2018, we can infer
+that these two states have the highest chance of people being killed in 
+shootings. We can also see that within the top 6 highest death states, 
+Tennessee (19 deaths) and Illinois (21 deaths) had a large difference in deaths
+related to shootings compared to California and Illinois.
+
