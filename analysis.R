@@ -81,24 +81,17 @@ top_6 <- total_filtered[1:6, ]
 
 chart <- ggplot(data = top_6, aes(x = reorder(state, -Deaths), y = Deaths,
                                   fill = state)) +
-  geom_bar (
-    stat="identity",
+  geom_bar(
+    stat = "identity",
     width = 0.5,
   ) +
-  theme_minimal() + 
+  theme_minimal() +
   ggtitle("Top 6 States with Highest Deaths Related to Shootings") +
-  xlab("States") + 
-  labs(fill = "States") + 
+  xlab("States") +
+  labs(fill = "States") +
   theme(legend.position = "none") +
-  geom_text(aes(label=Deaths, vjust=-0.25))
+  geom_text(aes(label = Deaths, vjust = -0.25))
 
 
 lint("analysis.R")
-
-
-
-
-
-
-
 
